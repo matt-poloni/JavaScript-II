@@ -1,6 +1,13 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
-
+function greet(you) {
+  function greeting() {
+    console.log(`Hey there, ${you}!`);
+    debugger;
+  }
+  greeting();
+}
+greet("Matt");
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
