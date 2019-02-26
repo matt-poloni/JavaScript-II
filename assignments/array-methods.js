@@ -80,8 +80,18 @@ console.log(ticketPriceTotal);
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1: In their next newsletter, the local chamber of commerce wants to spotlight the companies who donated the most money. Create a new array representing the companies who gave at least $250.
+let fatWallets = [];
+fatWallets = runners.filter(element => element.donation >= 250);
+console.log(fatWallets);
 
-// Problem 2
+// Problem 2: The treasurer for the community center was just arrested for skimming funds off of the donations from the event. They hid their scheme in large part by underreporting the donated totals by 10% of their reported value before the data was input into this database. Create an array of the actual totals.
+let realDonations = [];
+realDonations = runners.map(current => current.donation = Math.round(100*(current.donation * 1.1))/100);
+console.log(realDonations);
 
-// Problem 3
+// Problem 3: Now that we have the updated totals, use that array to update the original data.
+runners.forEach(
+  (current, i) => current.donation = realDonations[i]
+);
+console.log(runners);
