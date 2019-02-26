@@ -3,7 +3,6 @@
 function greet(you) {
   function greeting() {
     console.log(`Hey there, ${you}!`);
-    debugger;
   }
   greeting();
 }
