@@ -40,3 +40,12 @@ console.log(otherCounter.increment());
 console.log(otherCounter.increment());
 console.log(otherCounter.increment());
 console.log(otherCounter.decrement());
+
+// IIFE testing
+const iifeCounter = (_ => {
+  let count = 0;
+  return {
+    "incr": function() { return ++count; },
+    "decr": function() { return --count; },
+  }
+})();
