@@ -56,28 +56,42 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+runners.forEach( current => fullName.push(`${current.first_name} ${current.last_name}`) );
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+allCaps = runners.map( current => current.first_name.toUpperCase() )
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+largeShirts = runners.filter( element => element.shirt_size === "L" );
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+ticketPriceTotal = runners.reduce( ((accumulator, current) => accumulator + current.donation), 0);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1: In their next newsletter, the local chamber of commerce wants to spotlight the companies who donated the most money. Create a new array representing the companies who gave at least $250.
+let fatWallets = [];
+fatWallets = runners.filter(element => element.donation >= 250);
+console.log(fatWallets);
 
-// Problem 2
+// Problem 2: The treasurer for the community center was just arrested for skimming funds off of the donations from the event. They hid their scheme in large part by underreporting the donated totals by 10% of their reported value before the data was input into this database. Create an array of the actual totals.
+let realDonations = [];
+realDonations = runners.map(current => current.donation = Math.round(100*(current.donation * 1.1))/100);
+console.log(realDonations);
 
-// Problem 3
+// Problem 3: Now that we have the updated totals, use that array to update the original data.
+runners.forEach(
+  (current, i) => current.donation = realDonations[i]
+);
+console.log(runners);
